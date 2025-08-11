@@ -6,7 +6,7 @@ const surveyResults = {
   "As explicações do professor te ajudam a entender melhor o conteúdo?": { bom: 18, mediano: 3, ruim: 1 },
 };
 
-// Componente da página do professor
+// Componente da page do professor
 const ProfessorPage = ({ setPage }) => {
   return (
     <div className="page-container center-container">

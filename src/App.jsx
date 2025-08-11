@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import StudentPage from './pages/StudentPage';
-import ProfessorPage from './pages/ProfessorPage';
 
+// Se precisarmos mudar alguma cor ou fonte eh só mexer aqui!
 const styles = `
-  /* global.css */
+  /* global.css - Nossas cores e fontes principais! */
   :root {
-    --color-primary-dark: #0A192F;
-    --color-primary-medium: #172A45;
-    --color-primary-light: #2C425A;
-    --color-accent: #64FFDA;
-    --color-text: #F0F0F0;
-    --color-text-secondary: #8892B0;
-    --color-background-dark: #071321;
-    --color-border: #3A4A66;
+    --color-primary-dark: #0A192F; /* Fundo mais escuro */
+    --color-primary-medium: #172A45; /* Fundo das caixas (o card) */
+    --color-primary-light: #2C425A; /* Um azul mais claro pra usar por aí */
+    --color-accent: #64FFDA; /* Nossa cor de destaque, tipo dos botões */
+    --color-text: #F0F0F0; /* Cor principal dos textos */
+    --color-text-secondary: #8892B0; /* Cor para textos secundários */
+    --color-background-dark: #071321; /* Fundo total da página */
+    --color-border: #3A4A66; /* Cor da borda dos campos de input */
   }
   
   * {
@@ -27,7 +26,7 @@ const styles = `
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
-  /* pages.css */
+  /* pages.css - Estilos para as páginas */
   .page-container {
     display: flex;
     min-height: 100vh;
@@ -61,10 +60,6 @@ const styles = `
     padding-bottom: 2rem;
   }
 
-  .register-box, .survey-box {
-    width: 500px;
-  }
-  
   .title {
     font-size: 2rem;
     color: var(--color-accent);
@@ -164,83 +159,6 @@ const styles = `
     color: var(--color-accent);
     text-decoration: underline;
   }
-  
-  .button-group {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .button-group .button {
-    flex: 1;
-  }
-  
-  .survey-box .input {
-    margin-bottom: 2rem;
-  }
-  
-  .questions-list {
-    width: 100%;
-    text-align: left;
-  }
-  
-  .question-item {
-    margin-bottom: 1.5rem;
-  }
-  
-  .question-item p {
-    margin-bottom: 0.5rem;
-  }
-  
-  .radio-group {
-    display: flex;
-    gap: 1.5rem;
-  }
-  
-  .radio-group label {
-    cursor: pointer;
-    color: var(--color-text-secondary);
-    transition: color 0.2s ease;
-  }
-  
-  .radio-group label:hover {
-    color: var(--color-accent);
-  }
-  
-  .radio-group input {
-    margin-right: 0.5rem;
-  }
-  
-  .results-list {
-    width: 100%;
-    text-align: left;
-  }
-  
-  .result-item {
-    background-color: var(--color-primary-dark);
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    border: 1px solid var(--color-border);
-  }
-  
-  .result-question {
-    color: var(--color-text);
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  .results-details {
-    list-style-type: none;
-    padding-left: 0;
-    color: var(--color-text-secondary);
-  }
-  
-  .results-details li {
-    margin-bottom: 0.2rem;
-  }
 
   /* Estilos do Modal Aprimorados */
   .modal-overlay {
@@ -324,12 +242,9 @@ const styles = `
   }
 
   @media (max-width: 768px) {
-    .login-box, .about-us-box, .register-box, .survey-box {
+    .login-box {
       width: 100%;
       padding: 2rem;
-    }
-    .button-group {
-      flex-direction: column;
     }
     .modal-content {
       padding: 1.5rem;
@@ -345,12 +260,13 @@ const styles = `
   }
 `;
 
-
 const styleElement = document.createElement('style');
 styleElement.innerHTML = styles;
 document.head.appendChild(styleElement);
 
+// --- (O desenho do nosso logo) ---
 const Logo = () => {
+
   return (
     <svg 
       width="200" 
@@ -381,43 +297,56 @@ const Logo = () => {
   );
 };
 
-// --- Páginas do Aplicativo ---
-
-const LoginPage = ({ setPage }) => {
-
+// --- Componente da page de Login ---
+const LoginPage = () => {
+  // Se "showAboutUs" for 'true'  a janelinha aparece Se for 'false' ela esconde.
   const [showAboutUs, setShowAboutUs] = useState(false);
+
+  // Aqui eh onde vai ter que conectar a lógica de login.
+  // Por enquanto ele só "avisa" que os dados estão prontos.
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // AQUI!!! O codigo para chamar o backend entra aqui.
+    console.log('Dados do formulário de login prontos para serem enviados.');
+  };
 
   return (
     <div className="page-container login-container">
       <div className="box login-box">
         <Logo />
         <p className="subtitle">Acesse sua conta para continuar</p>
-        <div className="form">
+        <form className="form" onSubmit={handleLogin}>
           <input type="email" placeholder="E-mail" className="input" />
           <input type="password" placeholder="Senha" className="input" />
-          <div className="button-group">
-            <button className="button" onClick={() => setPage('studentPage')}>
-              Entrar como Aluno
-            </button>
-            <button className="button" onClick={() => setPage('professorPage')}>
-              Entrar como Professor
-            </button>
-          </div>
-        </div>
+          <button type="submit" className="button">
+            Entrar
+          </button>
+        </form>
         <div className="registration-links">
-          <a href="#" onClick={() => setPage('registerInstitution')}>Cadastrar nova instituição</a>
+          <a href="#">
+            {/* TODO: AQUI É O LINK para a página de cadastro de instituição. */}
+            Cadastrar nova instituição
+          </a>
           <div className="registration-links-group">
-            <a href="#" onClick={() => setPage('registerStudent')}>Cadastrar aluno</a>
-            <a href="#" onClick={() => setPage('registerProfessor')}>Cadastrar professor</a>
+            <a href="#">
+              {/* TODO: AQUI É O LINK para a página de cadastro de aluno. */}
+              Cadastrar aluno
+            </a>
+            <a href="#">
+              {/* TODO: AQUI É O LINK para a página de cadastro de professor. */}
+              Cadastrar professor
+            </a>
           </div>
         </div>
+        {/* Quando a gente clica aqui, o "showAboutUs" vira 'true' e a janela aparece. */}
         <a className="about-us-link" onClick={() => setShowAboutUs(true)}>Sobre Nós</a>
       </div>
 
-      {}
+      {/* Essa é a janela que aparece quando o "showAboutUs" é verdadeiro. */}
       {showAboutUs && (
         <div className="modal-overlay">
           <div className="modal-content">
+            {/* Esse botton aqui só fecha a janelinha quando a gente clica nele. */}
             <button className="modal-close-button" onClick={() => setShowAboutUs(false)}>&times;</button>
             <div className="modal-header">
               <h3>Sobre Nós</h3>
@@ -433,106 +362,14 @@ const LoginPage = ({ setPage }) => {
   );
 };
 
-
-const RegisterInstitutionPage = ({ setPage }) => (
-  <div className="page-container center-container">
-    <div className="box register-box">
-      <Logo />
-      <h2 className="title">Cadastrar Instituição</h2>
-      <p className="subtitle">Preencha os dados para cadastrar uma nova instituição.</p>
-      <form className="form">
-        <input type="text" placeholder="Nome da Instituição" className="input" />
-        <input type="text" placeholder="CNPJ" className="input" />
-        <input type="text" placeholder="Endereço Completo" className="input" />
-        <input type="text" placeholder="Telefone" className="input" />
-        <input type="email" placeholder="E-mail de Contato" className="input" />
-        <button type="submit" className="button">Cadastrar</button>
-      </form>
-      <a href="#" className="link-text" onClick={() => setPage('login')}>Voltar para o Login</a>
+// --- Componente Principal da Aplicação ---
+function App() {
+  // aqui só chama a page de login
+  return (
+    <div className="App">
+      <LoginPage />
     </div>
-  </div>
-);
-
-const InstitutionPage = ({ setPage }) => (
-  <div className="page-container center-container">
-    <div className="box register-box">
-      <Logo />
-      <h2 className="title">Página da Instituição</h2>
-      <p className="subtitle">Escolha uma opção para continuar o cadastro.</p>
-    </div>
-  </div>
-);
-
-// Página para o cadastro de Alunos.
-const RegisterStudentPage = ({ setPage }) => (
-  <div className="page-container center-container">
-    <div className="box register-box">
-      <Logo />
-      <h2 className="title">Cadastrar Aluno</h2>
-      <p className="subtitle">Preencha os dados do novo aluno.</p>
-      <form className="form">
-        <input type="email" placeholder="E-mail" className="input" />
-        <input type="password" placeholder="Senha" className="input" />
-        <input type="text" placeholder="CPF" className="input" />
-        <input type="text" placeholder="Instituição" className="input" />
-        <input type="text" placeholder="Telefone" className="input" />
-        <input type="text" placeholder="Estado" className="input" />
-        <input type="text" placeholder="Cidade" className="input" />
-        <button type="submit" className="button">Cadastrar</button>
-      </form>
-      <a href="#" className="link-text" onClick={() => setPage('login')}>Voltar para o Login</a>
-    </div>
-  </div>
-);
-
-// Página para o cadastro de Professores.
-const RegisterProfessorPage = ({ setPage }) => (
-  <div className="page-container center-container">
-    <div className="box register-box">
-      <Logo />
-      <h2 className="title">Cadastrar Professor</h2>
-      <p className="subtitle">Preencha os dados do novo professor.</p>
-      <form className="form">
-        <input type="email" placeholder="E-mail" className="input" />
-        <input type="password" placeholder="Senha" className="input" />
-        <input type="text" placeholder="CPF" className="input" />
-        <input type="text" placeholder="Instituição" className="input" />
-        <input type="text" placeholder="Telefone" className="input" />
-        <input type="text" placeholder="Estado" className="input" />
-        <input type="text" placeholder="Cidade" className="input" />
-        <button type="submit" className="button">Cadastrar</button>
-      </form>
-      <a href="#" className="link-text" onClick={() => setPage('login')}>Voltar para o Login</a>
-    </div>
-  </div>
-);
-
-function AppTeste() {
-
-  const [page, setPage] = useState('login');
-
-  const renderPage = () => {
-    switch (page) {
-      case 'login':
-        return <LoginPage setPage={setPage} />;
-      case 'registerInstitution':
-        return <RegisterInstitutionPage setPage={setPage} />;
-      case 'institutionPage':
-        return <InstitutionPage setPage={setPage} />;
-      case 'registerStudent':
-        return <RegisterStudentPage setPage={setPage} />;
-      case 'registerProfessor':
-        return <RegisterProfessorPage setPage={setPage} />;
-      case 'studentPage':
-        return <StudentPage setPage={setPage} />;
-      case 'professorPage':
-        return <ProfessorPage setPage={setPage} />;
-      default:
-        return <LoginPage setPage={setPage} />;
-    }
-  };
-
-  return <div className="App">{renderPage()}</div>;
+  );
 }
 
-export default AppTeste;
+export default App;
