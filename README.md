@@ -1,21 +1,11 @@
-# 📊 DashLab
 
----
-
-## 🚀 Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 - **Node.js**: v20.10.0 ou superior (LTS)  
 - **React**: v19.1.1  
 - **Vite**: v7.1.0  
 
----
 
-## 📦 Pré-requisitos
-Antes de começar, você precisa ter instalado na sua máquina:
-- [Node.js](https://nodejs.org/) (v20.10.0 ou superior, LTS recomendado)
-
----
-
-## ⚙️ Instalação
+##  Instalação
 
 1. **Clone o repositório:**
    ```bash
@@ -32,9 +22,3 @@ Antes de começar, você precisa ter instalado na sua máquina:
 4. Após a instalação, inicie o servidor de desenvolvimento com:
       ```bash
          npm run dev
-
-
-
-## 📌 Status do Projeto
-   🚧 Em desenvolvimento – versão de testes.
-   
