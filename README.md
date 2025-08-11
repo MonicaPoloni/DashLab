@@ -1,17 +1,40 @@
-##Versão de Testes##
+# 📊 DashLab
 
-Tecnologias Utilizadas
-    Node.Js v20.10.0 ou superior (LTS)
-    React: v19.1.1
-    Vite: v7.1.0
+---
 
-Instalação:
-    Navegue até a pasta do projeto:
-        cd dashlab
+## 🚀 Tecnologias Utilizadas
+- **Node.js**: v20.10.0 ou superior (LTS)  
+- **React**: v19.1.1  
+- **Vite**: v7.1.0  
 
-    Instale as dependências:
-        npm install
+---
 
-Como rodar:
-    Após a instalação, você pode iniciar o servidor de desenvolvimento com o seguinte comando:
-        npm run dev
+## 📦 Pré-requisitos
+Antes de começar, você precisa ter instalado na sua máquina:
+- [Node.js](https://nodejs.org/) (v20.10.0 ou superior, LTS recomendado)
+
+---
+
+## ⚙️ Instalação
+
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/seuusuario/dashlab.git
+
+2. Acesse a pasta do projeto:
+   ```bash
+   cd dashlab
+
+3. Instale as dependências:
+    ```bash
+    npm install
+
+4. Após a instalação, inicie o servidor de desenvolvimento com:
+      ```bash
+         npm run dev
+
+
+
+## 📌 Status do Projeto
+   🚧 Em desenvolvimento – versão de testes.
+   
