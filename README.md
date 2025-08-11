@@ -12,7 +12,6 @@
 ## 📦 Pré-requisitos
 Antes de começar, você precisa ter instalado na sua máquina:
 - [Node.js](https://nodejs.org/) (v20.10.0 ou superior, LTS recomendado)
-- [npm](https://www.npmjs.com/) (vem junto com o Node.js)
 
 ---
 
