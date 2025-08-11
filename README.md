@@ -30,10 +30,10 @@ Antes de começar, você precisa ter instalado na sua máquina:
     ```bash
     npm install
 
-##  ▶️ Como Rodar
+4. Como Rodar
    Após a instalação, inicie o servidor de desenvolvimento com:
       ```bash
-      npm run dev
+         npm run dev
 
 
 
