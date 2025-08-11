@@ -31,12 +31,12 @@ Antes de começar, você precisa ter instalado na sua máquina:
     npm install
 
 ##  ▶️ Como Rodar
-Após a instalação, inicie o servidor de desenvolvimento com:
-```bash
-npm run dev
+   Após a instalação, inicie o servidor de desenvolvimento com:
+      ```bash
+      npm run dev
 
 
 
-📌 Status do Projeto
-🚧 Em desenvolvimento – versão de testes.
+## 📌 Status do Projeto
+   🚧 Em desenvolvimento – versão de testes.
    
