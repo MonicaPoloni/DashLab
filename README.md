@@ -2,7 +2,8 @@
 ##  Tecnologias Utilizadas
 - **Node.js**: v20.10.0 ou superior (LTS)  
 - **React**: v19.1.1  
-- **Vite**: v7.1.0  
+- **Vite**: v7.1.0
+
 
 
 ##  Instalação
